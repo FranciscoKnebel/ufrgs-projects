@@ -2,3 +2,6 @@
 
 git subtree add --prefix $2 $1 master --squash;
 echo "$2 $1" >> repositories.md;
+
+git add repositories.md;
+git commit -m "Adicionado $2.";
