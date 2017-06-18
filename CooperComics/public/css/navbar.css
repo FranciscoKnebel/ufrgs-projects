@@ -1,0 +1,78 @@
+.hidden.menu {
+	display: none;
+}
+
+.secondary.pointing.menu .toc.item {
+	display: none;
+}
+
+.ui.secondary.inverted.pointing.menu {
+	transition: 1s;
+	text-shadow: none;
+}
+
+.ui.menu:not(.vertical) .item > .button {
+	margin-left: 0.5em;
+}
+
+.ui.menu .item img.logo {
+	margin: -.3em 0 !important;
+}
+
+.ui.secondary.inverted.pointing.menu {
+	border-width: 0;
+}
+
+@media only screen and (max-width: 600px) {
+	.secondary.pointing.menu .item,
+	.secondary.pointing.menu .menu {
+		display: none;
+	}
+
+	.secondary.pointing.menu .toc.item {
+		display: block;
+	}
+
+	.ui.fixed.menu {
+		display: none !important;
+	}
+}
+
+.ui.inverted.vertical.masthead.center.aligned.segment {
+	margin-top: 0 !important;
+	padding: 1em 0 1em 0 !important;
+  background-image: url('/img/cb_background.jpg') !important;
+	background-repeat: repeat-xy !important;}
+
+.ui.large.secondary.inverted.pointing.menu {
+	background-color: rgba(0,0,0,0) !important;
+}
+
+.ui.vertical.inverted.sidebar.menu {
+	background-color: #952108 !important;
+}
+
+.ui.menu .item>img:not(.ui) {
+  width: 3.5em;
+}
+
+.ui.fixed.menu {
+	background-color: #952108 !important;
+	transition: 1s;
+}
+
+.ui.fixed.menu .item {
+	color: white;
+}
+
+.ui.menu .active.item {
+	transition: 0.5s;
+  background: rgba(0,0,0,.2);
+  font-weight: 900;
+}
+
+.ui.menu .active.item:hover {
+	transition: 0.5s;
+	background: rgba(0,0,0,.5);
+	color: white;
+}

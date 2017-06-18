@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Cooper Comics</title>
+
+		<% include ../snippets/head %>
+		<% include ../snippets/analytics %>
+		<% include ../snippets/css %>
+
+		<style media="screen">
+			body.pushable>.pusher {
+				background-image: url('/img/404.jpg');
+				background-position: center;
+				background-size: cover;
+			}
+		</style>
+	</head>
+	<body>
+		<% include ../snippets/navbar/navbar %>
+
+		<div class="pusher">
+			<div class="ui inverted vertical masthead center aligned segment">
+				<% include ../snippets/navbar/navbar-fixed %>
+
+				<div class="ui text container">
+					<h1 class="ui inverted header">
+						404
+					</h1>
+				</div>
+			</div>
+		</div>
+
+		<% include ../snippets/js %>
+	</body>
+</html>

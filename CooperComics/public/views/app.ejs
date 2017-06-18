@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Cooper Comics</title>
+
+		<% include ../snippets/head %>
+		<% include ../snippets/analytics %>
+		<% include ../snippets/css %>
+	</head>
+	<body>
+		<% include ../snippets/navbar/navbar %>
+
+		<div class="pusher">
+			<div class="ui inverted vertical masthead center aligned segment">
+				<% include ../snippets/navbar/navbar-fixed %>
+
+				<div class="ui text container">
+					<h1 class="ui inverted header" style="margin-top: 0.5em;">
+						Cooper Comics
+					</h1>
+				</div>
+			</div>
+			<div class="ui container" style="margin-top: 2em;">
+				<% if (message.length > 0) { %>
+					<div style="text-align: center;">
+						<div class="ui floating big success message">
+						  <i class="close icon"></i>
+						  <div class="header">
+						    Successo!
+						  </div>
+						  <p><%= message %></p>
+						</div>
+					</div>
+				<% } %>
+
+				<div class="ui grid">
+					<div class="tablet only computer only row">
+						<div class="ui top attached huge buttons" style="margin-top: 2em;">
+							<a class="ui primary button" href="/leilao/criar">Criar Leilão</a>
+							<a class="ui green button" href="/leilao/buscar">Buscar Leilão</a>
+							<a class="ui secondary button" href="/leilao/listar">Listar Leilões</a>
+						</div>
+
+						<div class="ui container fluid" style="margin-right: 0 !important; margin-left: 0 !important;">
+							<div class="ui attached segment">
+								<div class="ui stackable three steps">
+									<a class="active step" href="/leilao/criar">
+										<i class="plus icon"></i>
+										<div class="content">
+											<div class="title">Criar Leilão</div>
+											<div class="description">Cadastre seus próprios livros!</div>
+										</div>
+									</a>
+									<a class="active step" href="/leilao/buscar">
+										<i class="search icon"></i>
+										<div class="content">
+											<div class="title">Buscar Leilão</div>
+											<div class="description">Encontre o livro procurado!</div>
+										</div>
+									</a>
+									<a class="active step" href="/leilao/listar">
+										<i class="list layout icon"></i>
+										<div class="content">
+											<div class="title">Listar Leilão</div>
+											<div class="description">Veja a lista de todos nossos leilões!</div>
+										</div>
+									</a>
+								</div>
+
+								<h1>
+									Olá, <%= user.name %>. Bem-vindo à Cooper Comics!
+								</h1>
+
+								<h2>Saldo em conta: R$ <%= user.cash %>.00 - <i>(<%= user.cash / 10 %>)*</i></h2>
+
+								<h2>
+									Leilões como Comprador:
+								</h2>
+								<div class="ui orange statistics">
+									<div class="ui statistic">
+									  <a class="value" href="/leilao/usuario/Comprador/currentAuctions">
+								    	<%= leiloes.Comprador.currentAuctions.length %>
+									  </a>
+									  <a class="label" href="/leilao/usuario/Comprador/currentAuctions">
+									    Em andamento
+									  </a>
+									</div>
+									<div class="ui statistic">
+									  <a class="value" href="/leilao/usuario/Comprador/paymentPendingAuctions">
+									    <%= leiloes.Comprador.paymentPendingAuctions.length %>
+									  </a>
+									  <a class="label" href="/leilao/usuario/Comprador/paymentPendingAuctions">
+									    Pagamento Pendente
+									  </a>
+									</div>
+									<div class="ui statistic">
+									  <a class="value" href="/leilao/usuario/Comprador/paymentDoneAuctions">
+									    <%= leiloes.Comprador.paymentDoneAuctions.length %>
+									  </a>
+									  <a class="label" href="/leilao/usuario/Comprador/paymentDoneAuctions">
+									    Pagamento Efetuado
+									  </a>
+									</div>
+									<div class="ui statistic">
+									  <a class="value" href="/leilao/usuario/Comprador/finalizedAuctions">
+									    <%= leiloes.Comprador.finalizedAuctions.length %>
+									  </a>
+									  <a class="label" href="/leilao/usuario/Comprador/finalizedAuctions">
+									    Finalizados
+									  </a>
+									</div>
+								</div>
+
+								<h2>
+									Leilões como Vendedor:
+								</h2>
+								<div class="ui violet statistics">
+									<div class="ui statistic">
+									  <a class="value" href="/leilao/usuario/Vendedor/currentAuctions">
+									    <%= leiloes.Vendedor.currentAuctions.length %>
+									  </a>
+									  <a class="label" href="/leilao/usuario/Vendedor/currentAuctions">
+									    Em andamento
+									  </a>
+									</div>
+									<div class="ui statistic">
+									  <a class="value" href="/leilao/usuario/Vendedor/paymentPendingAuctions">
+									    <%= leiloes.Vendedor.paymentPendingAuctions.length %>
+									  </a>
+									  <a class="label" href="/leilao/usuario/Vendedor/paymentPendingAuctions">
+									    Pagamento Pendente
+									  </a>
+									</div>
+									<div class="ui statistic">
+										<a class="value" href="/leilao/usuario/Vendedor/paymentDoneAuctions">
+											<%= leiloes.Vendedor.paymentDoneAuctions.length %>
+										</a>
+										<a class="label" href="/leilao/usuario/Vendedor/paymentDoneAuctions">
+											Pagamento Efetuado
+										</a>
+									</div>
+									<div class="ui statistic">
+									  <a class="value" href="/leilao/usuario/Vendedor/finalizedAuctions">
+									    <%= leiloes.Vendedor.finalizedAuctions.length %>
+									  </a>
+									  <a class="label" href="/leilao/usuario/Vendedor/finalizedAuctions">
+									    Finalizados
+									  </a>
+									</div>
+									<div class="ui statistic">
+									  <a class="value" href="/leilao/usuario/Vendedor/validationPendingAuctions">
+									    <%= leiloes.Vendedor.validationPendingAuctions.length %>
+									  </a>
+									  <a class="label" href="/leilao/usuario/Vendedor/validationPendingAuctions">
+									    Validação Pendente
+									  </a>
+									</div>
+									<div class="ui statistic">
+									  <a class="value" href="/leilao/usuario/Vendedor/cancelledAuctions">
+									    <%= leiloes.Vendedor.cancelledAuctions.length %>
+									  </a>
+									  <a class="label" href="/leilao/usuario/Vendedor/cancelledAuctions">
+									    Cancelados
+									  </a>
+									</div>
+								</div>
+								<br>
+								<span>* Comissão das vendas</span>
+							</div>
+						</div>
+					</div>
+					<div class="mobile only row">
+						<div class="ui attached segment">
+							<a class="ui small compact primary button" href="/leilao/criar">Criar Leilão</a>
+							<a class="ui small compact green button" href="/leilao/buscar">Buscar Leilão</a>
+							<a class="ui small compact secondary button" href="/leilao/listar">Listar Leilões</a>
+							<h1>
+								Olá, <%= user.name %>.
+								<br>
+								Bem-vindo à Cooper Comics!
+							</h1>
+
+							<h2>Saldo em conta: R$ <%= user.cash %>.00 - <i>(<%= user.cash / 10 %>.00)*</i></h2>
+
+							<h2>
+								Leilões como Comprador:
+							</h2>
+							<div class="ui link list">
+								<a class="item" href="/leilao/usuario/Comprador/currentAuctions">
+									<i class="right triangle icon"></i>
+									<div class="content">
+										<div class="header">
+											Em andamento
+										</div>
+										<div class="description">
+											<%= leiloes.Comprador.currentAuctions.length %>
+										</div>
+									</div>
+								</a>
+								<a class="item"  href="/leilao/usuario/Comprador/paymentPendingAuctions">
+									<i class="right triangle icon"></i>
+									<div class="content">
+										<div class="header">
+											Pagamento Pendente
+										</div>
+										<div class="description">
+											<%= leiloes.Comprador.paymentPendingAuctions.length %>
+										</div>
+									</div>
+								</a>
+								<a class="item" href="/leilao/usuario/Comprador/paymentDoneAuctions">
+									<i class="right triangle icon"></i>
+									<div class="content">
+										<div class="header">
+											Pagamento Efetuado
+										</div>
+										<div class="description">
+											<%= leiloes.Comprador.paymentDoneAuctions.length %>
+										</div>
+									</div>
+								</a>
+								<a class="item" href="/leilao/usuario/Comprador/finalizedAuctions">
+									<i class="right triangle icon"></i>
+									<div class="content">
+										<div class="header">
+											Finalizados
+										</div>
+										<div class="description">
+											<%= leiloes.Comprador.finalizedAuctions.length %>
+										</div>
+									</div>
+								</a>
+							</div>
+
+							<h2>
+								Leilões como Vendedor:
+							</h2>
+							<div class="ui link list">
+								<a class="item" href="/leilao/usuario/Vendedor/currentAuctions">
+									<i class="right triangle icon"></i>
+									<div class="content">
+										<div class="header">
+											Em andamento
+										</div>
+										<div class="description">
+											<%= leiloes.Vendedor.currentAuctions.length %>
+										</div>
+									</div>
+								</a>
+								<a class="item" href="/leilao/usuario/Vendedor/paymentPendingAuctions">
+									<i class="right triangle icon"></i>
+									<div class="content">
+										<div class="header">
+											Pagamento Pendente
+										</div>
+										<div class="description">
+											<%= leiloes.Vendedor.paymentPendingAuctions.length %>
+										</div>
+									</div>
+								</a>
+								<a class="item" href="/leilao/usuario/Vendedor/paymentDoneAuctions">
+									<i class="right triangle icon"></i>
+									<div class="content">
+										<div class="header">
+											Pagamento Efetuado
+										</div>
+										<div class="description">
+											<%= leiloes.Comprador.paymentDoneAuctions.length %>
+										</div>
+									</div>
+								</a>
+								<a class="item" href="/leilao/usuario/Vendedor/finalizedAuctions">
+									<i class="right triangle icon"></i>
+									<div class="content">
+										<div class="header">
+											Finalizados
+										</div>
+										<div class="description">
+											<%= leiloes.Comprador.finalizedAuctions.length %>
+										</div>
+									</div>
+								</a>
+								<a class="item" href="/leilao/usuario/Vendedor/validationPendingAuctions">
+									<i class="right triangle icon"></i>
+									<div class="content">
+										<div class="header">
+											Validação Pendente
+										</div>
+										<div class="description">
+											<%= leiloes.Vendedor.validationPendingAuctions.length %>
+										</div>
+									</div>
+								</a>
+								<a class="item" href="/leilao/usuario/Vendedor/cancelledAuctions">
+									<i class="right triangle icon"></i>
+									<div class="content">
+										<div class="header">
+											Cancelados
+										</div>
+										<div class="description">
+											<%= leiloes.Vendedor.cancelledAuctions.length %>
+										</div>
+									</div>
+								</a>
+							</div>
+							<span>* Comissão das vendas</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<% include ../snippets/footer %>
+		</div>
+
+		<% include ../snippets/js %>
+		<script type="text/javascript">
+			$('.message .close').on('click', function() {
+				$(this).closest('.message').transition('fade');
+			});
+		</script>
+	</body>
+</html>

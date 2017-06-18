@@ -1,0 +1,82 @@
+<div class="ui very padded segment">
+	<h1 class="ui header">Validar leilões</h1>
+	<div class="">
+	  <div class="ui dimmer" ng-class="{active: loading.state}">
+		  <div class="ui text loader">{{loading.message}}</div>
+		</div>
+	</div>
+	<h2 class="">{{message}}</h2>
+	<h2 class="">{{error}}</h2>
+
+	<div class="ui stackable grid">
+		<div class="eight wide column">
+			<div class="ui big fluid buttons" style="margin-top: 0.5em;">
+				<a href="/admin" class="ui red button">Voltar</a>
+				<a ng-click="refresh('validationPendingAuctions')" class="ui green button">Refresh</a>
+			</div>
+		</div>
+		<div class="eight wide column" ng-show="leiloes.length >= 1">
+			<div class="ui big three buttons">
+				<button class="ui primary button" ng-click="ordenar('limitDate')"><i class="clock icon"></i></button>
+				<button class="ui green button" ng-click="ordenar('currentPrice')"><i class="sort content ascending icon"></i></button>
+				<button class="ui secondary button" ng-click="ordenar('book.title')"><i class="sort alphabet ascending icon"></i></button>
+			</div>
+		</div>
+		<div class="sixteen wide column" ng-show="leiloes.length >= 1">
+			<div class="ui labeled fluid input">
+				<div class="ui blue label">
+					Título
+				</div>
+				<input type="search" ng-model="search.book.title" placeholder="Filtrar por Título" aria-label="filtrar por título" />
+			</div>
+			<div class="ui labeled fluid input">
+				<div class="ui blue label">
+					Edição
+				</div>
+				<input type="search" ng-model="search.book.edition" placeholder="Filtrar por Edição" aria-label="filtrar por edição" />
+			</div>
+		</div>
+	</div>
+
+	<div ng-if="leiloes.length >= 1" class="ui relaxed divided items" id="stickyContext">
+		<div class="animate-repeat item" ng-repeat="leilao in leiloes | orderBy:propertyName:reverse | filter: search">
+			<a class="ui small image" href="/leilao/{{leilao._id}}" target="_self">
+			  <img ng-src="{{leilao.book.images[0]}}">
+			</a>
+			<div class="content">
+				<a class="header" href="/leilao/{{leilao._id}}" target="_self">Título: {{leilao.book.title}}</a><br>
+				<a class="header">Autor: {{leilao.book.author}}</a><br>
+				<a class="header">Editora: {{leilao.book.publisher}}</a><br>
+				<a class="header">Edição: {{leilao.book.edition}}</a><br>
+				<a>Vendedor: {{leilao.seller.name}} <{{leilao.seller.email}}></a>
+				<div class="meta">
+					<a>Preço inicial: {{leilao.initialPrice}}</a><br>
+					<a>Leilão criado em: {{ leilao.createdAt | date:'HH:mm:ss yyyy-MM-dd'}}</a><br>
+					<a>Final de leilão: {{ leilao.limitDate | date:'HH:mm:ss yyyy-MM-dd'}}</a>
+				</div>
+				<div class="description">
+					<p>{{leilao.description}}</p>
+				</div>
+				<div class="extra">
+					<button type="button" name="validar" class="ui green button" ng-click="validarLeilao(leilao._id)">Validar Leilão</button>
+					<a type="button" class="ui blue button" href="/leilao/editar/{{leilao._id}}" target="_self">Editar Leilao</a>
+				</div>
+			</div>
+		</div>
+		<div class="no-items">
+			<h3 class="header">
+				Não há resultados para sua busca.
+			</h3>
+			<h4>
+				Título: <i>{{search.book.title}}</i>
+			</h4>
+			<h4>
+				Edição: <i>{{search.book.edition}}</i>
+			</h4>
+		</div>
+	</div>
+
+	<div ng-if="leiloes.length > 3" class="ui big buttons">
+		<a href="/admin" class="ui red button">Voltar</a>
+	</div>
+</div>

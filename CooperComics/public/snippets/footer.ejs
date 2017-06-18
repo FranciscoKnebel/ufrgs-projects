@@ -1,0 +1,47 @@
+<footer class="ui inverted vertical footer segment">
+  <div class="ui center aligned container">
+    <div class="ui inverted divided three column grid">
+      <div class="column">
+        <h4 class="ui inverted header">Main</h4>
+        <div class="ui inverted link list">
+          <a href="/" class="item" target="_self">Home</a>
+          <a href="/app" class="item" target="_self">Aplicativo</a>
+          <a href="/contato" class="item" target="_self">Contato</a>
+        </div>
+      </div>
+      <div class="column">
+				<% if(typeof user !== "undefined") { %>
+					<h4 class="ui inverted header">Leilão</h4>
+	        <div class="ui inverted link list">
+						<% if(user._type !== 'Administrador') { %>
+	          	<a href="/leilao/criar" class="item" target="_self">Criar</a>
+						<% } %>
+	          <a href="/leilao/buscar" class="item" target="_self">Buscar</a>
+	          <a href="/leilao/listar" class="item" target="_self">Listar</a>
+	          <a href="/relatorios" class="item" target="_self">Relatórios</a>
+	        </div>
+				<% } %>
+      </div>
+      <div class="column">
+			<h4 class="ui inverted header">Social</h4>
+				<div class="ui inverted link list">
+					<a href="#" class="item" target="_self">Facebook</a>
+					<a href="#" class="item" target="_self">Twitter</a>
+					<a href="#" class="item" target="_self">YouTube</a>
+					<a href="#" class="item" target="_self">Instagram</a>
+				</div>
+      </div>
+    </div>
+    <div class="ui inverted section divider"></div>
+		<div class="ui centered">
+			<img src="/img/pbj.gif" alt="Peanut Butter" class="ui banana tiny image">
+			<img src="/img/142p142transparent.png" class="ui banana tiny image" alt="Cooper Comics">
+			<img src="/img/pbj.gif" alt="Peanut Butter" class="ui banana tiny image">
+		</div>
+    <div class="ui horizontal inverted small divided link list">
+      <a class="item" href="/sitemap.xml" target="_self">Sitemap</a>
+      <a class="item" href="#" target="_self">Termos e Condições</a>
+      <a class="item" href="#" target="_self">Política de Privacidade</a>
+    </div>
+  </div>
+</footer>

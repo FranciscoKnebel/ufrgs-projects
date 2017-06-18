@@ -1,0 +1,55 @@
+<div class="ui segment" ng-class="{loading: loading}">
+	<div class="" ng-if="error">
+		<h1 class="ui header">Erro!</h1>
+		<h2>{{error}}</h2>
+	</div>
+
+	<div class="" ng-hide="error">
+		<div class="ui stackable divided grid" style="margin-bottom: 0.5em;">
+			<div class="row">
+				<div class="ten wide column">
+					<h1 class="ui header" style="margin-bottom: 0;">{{leilao.book.title}}</h1>
+					<h2 class="" style="margin-top: 0;"><i>{{leilao.book.author}}</i></h2>
+				</div>
+			</div>
+			<div class="eight wide tablet seven wide computer column">
+				<img ng-src="{{leilao.book.images[0]}}" class="ui left floated spaced bordered small image"/>
+
+				<h2 style="margin-top: 0;">
+					Editora: {{leilao.book.publisher}}
+					<br>
+					Edição: {{leilao.book.edition}}
+				</h2>
+
+				<p>
+					Estado: {{leilao.state}}
+					<br>
+					Lances já efetuados: {{leilao.bids.length}}
+				</p>
+				<p style="margin-top: 4.5em;">
+					<br>
+					Preço atual: {{leilao.currentPrice}}
+					<br>
+					Novo lance mínimo: {{leilao.nextPrice}}
+					<br>
+					<div class="ui input">
+						<input type="Number" ng-value="leilao.nextPrice" ng-model="bidvalue" min="{{leilao.nextPrice}}">
+					</div>
+					<button type="button" class="ui green button" ng-class="{disabled : leilao.state != 'currentAuctions'}" ng-click="efetuarLance()">Efetuar lance</button>
+				</p>
+			</div>
+			<div class="eight wide tablet nine wide computer column">
+				<div class="ui message">
+					<p>
+						{{leilao.description}}
+					</p>
+				</div>
+				<br>
+				Final de leilão: {{ leilao.limitDate | date:'yyyy-MM-dd HH:mm:ss'}}</a>
+			</div>
+		</div>
+	</div>
+	<div class="ui big buttons" style="margin-top: 0.5em;">
+		<a href="/app" class="ui red button">Voltar</a>
+	</div>
+</div>
