@@ -1,9 +1,0 @@
-#!/bin/bash
-
-remove() {
-  sed "/$1/d" repositories.md > temp;
-  mv temp repositories.md;
-  rm -rf "$1";
-}
-
-remove $1
