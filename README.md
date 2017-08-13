@@ -1,7 +1,7 @@
 # ufrgs-projects
 Central para projetos realizados como atividade curricular da UFRGS.
 
-
+![logo.jpg](logo.jpg) ![logo_inf.png](logo_inf.png)
 
 # Criado usando git subtree
 https://developer.atlassian.com/blog/2015/05/the-power-of-git-subtree/
